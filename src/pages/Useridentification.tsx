@@ -29,6 +29,7 @@ export function UserIdentification() {
         setisFilled(!!name);
     }
     const handleInputFocus = () => setFocus(true);
+
     const handleInputChange = (value: string) => {
         setisFilled(!!value);
         setName(value);
@@ -65,7 +66,8 @@ export function UserIdentification() {
                                 onChangeText={handleInputChange}
                                 style={[
                                     styles.input,
-                                    (isFocused || isFilled) && { borderColor: colors.green }
+                                    (isFocused || isFilled) && 
+                                    { borderColor: colors.green }
                                 ]}
                             />
 
