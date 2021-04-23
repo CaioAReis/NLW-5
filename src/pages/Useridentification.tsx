@@ -4,11 +4,13 @@ import {
     View, 
     Text,
     TextInput,
+    Alert,
     KeyboardAvoidingView,
     TouchableWithoutFeedback,
     Platform,
     Keyboard
 } from 'react-native';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 import { useNavigation } from '@react-navigation/core';
 
@@ -35,7 +37,11 @@ export function UserIdentification() {
         setName(value);
     }
 
-    function handleSubmit() {
+    async function handleSubmit() {
+        if (!name) 
+            return Alert.alert('Me diz como te chamar! 😢😭');
+
+        await AsyncStorage.setItem('@plantmanager:user', name);
         navigation.navigate('Confirmation');
     }
 
